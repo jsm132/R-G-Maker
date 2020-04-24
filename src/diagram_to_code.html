@@ -1,0 +1,46 @@
+<html>
+    <script src="js/codigo.js"></script>
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+    <script src="js/DataInspector.js"></script>
+    <script src="js/Figures.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/css/codeStyle.css">
+    <head>
+        </script>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <div id="myDiagramDiv" style="width:1000px; height:700px; background-color: #DAE4E4;">
+        </div>
+        <button class="changeType" type="button" onclick="window.location.href = 'text_to_diagram.html'">Escribir código</button>
+
+        <span style="display: inline-block; vertical-align: top;">
+            <div id="inspectorDiv" class="inspector"> </div><br>
+        </span>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAN4xOvIZPQF8-2A_1Af83vYD4txuyjHw0",
+    authDomain: "rg-methodology.firebaseapp.com",
+    databaseURL: "https://rg-methodology.firebaseio.com",
+    projectId: "rg-methodology",
+    storageBucket: "rg-methodology.appspot.com",
+    messagingSenderId: "192787928991",
+    appId: "1:192787928991:web:31ab3d107eba0a67734faa",
+    measurementId: "G-2PWVPEX19C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,58 @@
+header {
+    text-align: center;
+    background: #232323;
+    color: white;
+    font-size: 80px;
+    font-family: 'Lobster', cursive;
+    font: bold;
+}
+
+label {
+    color: white
+}
+
+body {
+    background-image: url('src/assets/piensa.png');
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    border-radius: 8px;
+}
+
+button {
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+.loginButton {
+    background-color: #9900FF;
+    border: 2px solid #9900FF;
+}
+
+.registerButton {
+    background-color: #00C4CC;
+    border: 2px solid #00C4CC;
+}
+
+p {
+    color: white;
+}
