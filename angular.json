@@ -26,7 +26,9 @@
                         "styles": [
                             "src/styles.css"
                         ],
-                        "scripts": []
+                        "scripts": ["src/assets/js/code_text_to_diagram.js", "src/assets/js/codigo.js", "src/assets/js/DataInspector.js",
+                            "src/assets/js/Figures.js", "src/assets/js/require.js"
+                        ]
                     },
                     "configurations": {
                         "production": {

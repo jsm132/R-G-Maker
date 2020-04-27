@@ -12,6 +12,7 @@ label {
 }
 
 body {
+    height: 100vh;
     background-image: url('src/assets/piensa.png');
 }
 
