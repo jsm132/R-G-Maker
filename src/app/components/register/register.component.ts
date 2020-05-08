@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../servicios/auth.service';
 import { RouterModule, Router } from '@angular/router';
-
+import * as firebase from 'firebase/app';
+declare const reg: any;
 
 @Component({
   selector: 'app-register',
@@ -23,10 +24,16 @@ export class RegisterComponent implements OnInit {
 
   addUser(){
     
-    if (this.confirmPass === this.pass && this.pass != undefined)
+    if (this.confirmPass === this.pass && this.pass !== undefined)
     {
       this.AuthService.registerUser(this.email, this.pass);
+      // almacenamos usando sessionStorage, el nombre del usuario para poder usarlo en la aplicación
+      sessionStorage.setItem('id', this.email);
       this.router.navigate(['/main']);
+
+      const db = firebase.firestore();
+      reg(db, this.email);
+
     }
     else{
       if(this.confirmPass !== this.pass){

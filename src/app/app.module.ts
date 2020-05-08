@@ -13,8 +13,9 @@ import { DiagramCreatorComponent } from './components/diagram-creator/diagram-cr
 import { AuthService } from './servicios/auth.service';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/header-sidebar/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,9 @@ import { FooterComponent } from './components/footer/footer.component';
     RegisterComponent,
     LoginComponent,
     DiagramCreatorComponent,
-    HeaderComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,23 @@
-body {
-    font-family: "Lato", sans-serif;
+.editor {
+    margin-left: 200px;
 }
 
-.sidebar {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidebar a {
-    padding: 6px 6px 6px 32px;
+button {
+    background-color: #4CAF50;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    color: white;
 }
 
-.sidebar a:hover {
-    color: #f1f1f1;
+button:hover {
+    background-color: white;
+    color: black;
 }

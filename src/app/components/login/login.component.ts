@@ -31,9 +31,11 @@ export class LoginComponent implements OnInit {
   async doLogin(){
     var loguedIn;
     this.AuthService.login(this.email, this.pass);
-    await this.delay(800);
+    await this.delay(1500);
     loguedIn = this.check();
     if (loguedIn != null){
+      // almacenamos usando sessionStorage, el nombre del usuario para poder usarlo en la aplicación
+      sessionStorage.setItem('id', this.email);
       this.router.navigate(['/main']);
     }
     else

@@ -7,13 +7,32 @@ var ifCond = 1;
 var functionNumber = 1;
 var code = "";
 
-function storeDiagram() {
-    var diagram = [{ "key": "Algoritmo", "color": "#3d6fa0", "text": "Algoritmo", "group": "Actividades", "son": 0, "category": "Actividad", "__gohashid": 573 }, { "key": "Entrada", "parent": "Algoritmo", "color": "lightblue", "text": "Entrada", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 574 }, { "key": "Desarrollo", "parent": "Algoritmo", "color": "lightblue", "text": "Desarrollo", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 575 }, { "key": "Salida", "parent": "Algoritmo", "color": "lightblue", "text": "Salida", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 576 }, { "key": "Actividad1", "parent": "Entrada", "color": "#dca85c", "text": "Actividad1", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 781 }, { "key": "Sentencia1", "parent": "Desarrollo", "color": "#5ad170", "text": "Sentencia1", "son": 2, "group": "Sentencias", "category": "Sentencia", "__gohashid": 913 }, { "key": "Actividad2", "parent": "Salida", "color": "#dca85c", "text": "Actividad2", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 1131 }, { "key": "Actividad3", "parent": "Salida", "color": "#dca85c", "text": "Actividad3", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 1327 }]
+function load(db) {
+    // Con esto obtenemos todos los datos de los documentos de firebase
+    db.collection("users").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data().diagrams);
+        });
+    });
+}
 
+function store(db, user) {
+
+    const mio = [{ diagramName: "name", diagram: myDiagram.model.uc }];
+    console.log(myDiagram.model.uc);
+
+    db.collection("users").doc(user).update({
+        diagrams: mio
+    });
+
+    /*var diagram = [{ "key": "Algoritmo", "color": "#3d6fa0", "text": "Algoritmo", "group": "Actividades", "son": 0, "category": "Actividad", "__gohashid": 573 }, { "key": "Entrada", "parent": "Algoritmo", "color": "lightblue", "text": "Entrada", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 574 }, { "key": "Desarrollo", "parent": "Algoritmo", "color": "lightblue", "text": "Desarrollo", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 575 }, { "key": "Salida", "parent": "Algoritmo", "color": "lightblue", "text": "Salida", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 576 }, { "key": "Actividad1", "parent": "Entrada", "color": "#dca85c", "text": "Actividad1", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 781 }, { "key": "Sentencia1", "parent": "Desarrollo", "color": "#5ad170", "text": "Sentencia1", "son": 2, "group": "Sentencias", "category": "Sentencia", "__gohashid": 913 }, { "key": "Actividad2", "parent": "Salida", "color": "#dca85c", "text": "Actividad2", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 1131 }, { "key": "Actividad3", "parent": "Salida", "color": "#dca85c", "text": "Actividad3", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 1327 }]
+
+
+    // cargamos los datos del diagrama en el diagrama de gojs
     myDiagram.model = new go.TreeModel;
     for (var i = 0; i < diagram.length; i++) {
         myDiagram.model.addNodeData(diagram[i]);
-    }
+    }*/
 }
 
 function recursive(node) { //función que recorre el árbol recursivamente en preorden
@@ -153,11 +172,13 @@ function recursiveAddIf(node, gojsNode) {
 function init() {
     // creamos el tablero
     var $ = go.GraphObject.make;
+
     myDiagram =
-        $(go.Diagram, "myDiagramDiv", {
+        $(go.Diagram, "DiagramDiv", {
             layout: $(go.TreeLayout, // el diagrama se muestra en forma de árbol
                 { angle: 90, layerSpacing: 35 })
         });
+
 
     var myModel = $(go.Model);
 
@@ -258,7 +279,7 @@ function init() {
 
     var FunctionTemplate =
         $(go.Node, "Auto",
-            $(go.Shape, "Subroutine",
+            $(go.Shape, "Ellipse",
                 new go.Binding("fill", "color")),
             $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: true, isMultiline: false }, // el atributo editable permite editar el texto de los nodos
                 new go.Binding("text", "text").makeTwoWay()) //makeTwoWay se utiliza para que el texto al ser modificado se modifique también el atributo text
@@ -301,22 +322,26 @@ function init() {
 }
 
 function updateCode() { //funcion que actualiza el código generado por el arbol
-    var body = document.querySelector("body");
-    if (body.querySelector("p") != null) {
-        body.removeChild(body.querySelector("p"));
+    var body = document.getElementById("codeLabelDiv");
+    if (body != null) {
+        if (body.querySelector("p") != null) {
+            body.removeChild(body.querySelector("p"));
+        }
+        code = "//Algoritmo<br>";
+        var codelabel = document.createElement("p");
+
+        recursive(tree);
+        codelabel.innerHTML = code;
+        codelabel.id = "codeLabel";
+        codelabel.style.position = "absolute";
+        codelabel.style.left = "62%";
+        codelabel.style.top = "10%";
+        codelabel.style.fontFamily = "Times New Roman";
+        codelabel.style.fontSize = "16px";
+
+        body.appendChild(codelabel);
     }
-    code = "//Algoritmo<br>";
-    var codelabel = document.createElement("p");
 
-    recursive(tree);
-    codelabel.innerHTML = code;
-    codelabel.style.position = "absolute";
-    codelabel.style.left = "1025px";
-    codelabel.style.top = "5px";
-    codelabel.style.fontFamily = "Times New Roman";
-    codelabel.style.fontSize = "16px";
-
-    body.appendChild(codelabel);
 }
 
 function condition(e, obj) { //añade una if
