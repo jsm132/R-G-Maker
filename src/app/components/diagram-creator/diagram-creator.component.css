@@ -21,3 +21,15 @@ button:hover {
     background-color: white;
     color: black;
 }
+
+span {
+    font-weight: bold;
+}
+
+input {
+    border-radius: 8px;
+}
+
+#optionsDiv {
+    margin-left: 13%;
+}

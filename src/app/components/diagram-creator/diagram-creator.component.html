@@ -10,10 +10,12 @@
     <div class="editor">
         <div id="DiagramDiv" style=" position:relative; width:57%; height:700px; background-color: #DAE4E4;">
         </div>
-        <div id="codeLabelDiv"></div>
-        <button class="changeType ml-2" type="button">Escribir código</button>
-        <button class="changeType ml-4" type="button" (click)="storeDiagram()">guardar diagrama</button>
-        <button class="changeType ml-4" type="button" (click)="loadDiagram()">cargar diagrama</button>
+        <div class id="codeLabelDiv"></div>
+        <div id="optionsDiv">
+            <span>Nombre del diagrama: </span>
+            <input class="text" id="diagramName">
+            <button class="changeType ml-2" type="button" (click)="storeDiagram()">guardar diagrama</button>
+        </div>
 
         <span style="display: inline-block; vertical-align: top;">
             <div id="inspectorDiv" class="inspector"> </div><br>

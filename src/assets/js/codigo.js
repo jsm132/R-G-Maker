@@ -7,46 +7,6 @@ var ifCond = 1;
 var functionNumber = 1;
 var code = "";
 
-function load(db) {
-    // Con esto obtenemos todos los datos de los documentos de firebase
-    db.collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(doc.data().diagrams);
-        });
-    });
-}
-
-function getDataFromUser(db, user, allDiagrams) {
-    const mio = { diagramName: "name", diagram: myDiagram.model.uc };
-
-    allDiagrams.push(mio);
-    console.log(allDiagrams);
-    db.collection("users").doc(user).update({
-        diagrams: allDiagrams
-    });
-}
-
-function store(db, user) {
-
-    let data;
-    data = db.collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            if (doc.id == user) {
-                getDataFromUser(db, user, doc.data().diagrams);
-            }
-        });
-    });
-
-    /*var diagram = [{ "key": "Algoritmo", "color": "#3d6fa0", "text": "Algoritmo", "group": "Actividades", "son": 0, "category": "Actividad", "__gohashid": 573 }, { "key": "Entrada", "parent": "Algoritmo", "color": "lightblue", "text": "Entrada", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 574 }, { "key": "Desarrollo", "parent": "Algoritmo", "color": "lightblue", "text": "Desarrollo", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 575 }, { "key": "Salida", "parent": "Algoritmo", "color": "lightblue", "text": "Salida", "group": "Actividades", "son": 1, "category": "Actividad", "__gohashid": 576 }, { "key": "Actividad1", "parent": "Entrada", "color": "#dca85c", "text": "Actividad1", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 781 }, { "key": "Sentencia1", "parent": "Desarrollo", "color": "#5ad170", "text": "Sentencia1", "son": 2, "group": "Sentencias", "category": "Sentencia", "__gohashid": 913 }, { "key": "Actividad2", "parent": "Salida", "color": "#dca85c", "text": "Actividad2", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 1131 }, { "key": "Actividad3", "parent": "Salida", "color": "#dca85c", "text": "Actividad3", "son": 2, "group": "Actividades", "category": "Actividad", "__gohashid": 1327 }]
-
-
-    // cargamos los datos del diagrama en el diagrama de gojs
-    myDiagram.model = new go.TreeModel;
-    for (var i = 0; i < diagram.length; i++) {
-        myDiagram.model.addNodeData(diagram[i]);
-    }*/
-}
-
 function recursive(node) { //función que recorre el árbol recursivamente en preorden
     for (var i = 0; i < node.children.length; i++) {
         for (var j = 0; j < node.children[i].son; j++) {

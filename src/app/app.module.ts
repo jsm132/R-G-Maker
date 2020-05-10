@@ -16,6 +16,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { HeaderComponent } from './components/header-sidebar/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { UserDiagramsComponent } from './components/user-diagrams/user-diagrams.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     DiagramCreatorComponent,
     FooterComponent,
     HeaderComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    UserDiagramsComponent
   ],
   imports: [
     BrowserModule,
