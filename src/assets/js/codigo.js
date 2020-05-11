@@ -141,15 +141,19 @@ function recursiveAddIf(node, gojsNode) {
     }
 }
 
-function init() {
+function init(model, isEdit) {
     // creamos el tablero
     var $ = go.GraphObject.make;
 
-    myDiagram =
-        $(go.Diagram, "DiagramDiv", {
-            layout: $(go.TreeLayout, // el diagrama se muestra en forma de árbol
-                { angle: 90, layerSpacing: 35 })
-        });
+    if (!isEdit) {
+        myDiagram =
+            $(go.Diagram, "DiagramDiv", {
+                layout: $(go.TreeLayout, // el diagrama se muestra en forma de árbol
+                    { angle: 90, layerSpacing: 35 })
+            });
+    }
+
+
 
 
     var myModel = $(go.Model);
@@ -270,12 +274,19 @@ function init() {
             $(go.Shape, { strokeWidth: 3, stroke: "#555" }));
 
 
-    myDiagram.model = new go.TreeModel([
-        { key: "Algoritmo", color: "#3d6fa0", text: "Algoritmo", group: "Actividades", son: 0, category: "Actividad" },
-        { key: "Entrada", parent: "Algoritmo", color: "lightblue", text: "Entrada", group: "Actividades", son: 1, category: "Actividad" },
-        { key: "Desarrollo", parent: "Algoritmo", color: "lightblue", text: "Desarrollo", group: "Actividades", son: 1, category: "Actividad" },
-        { key: "Salida", parent: "Algoritmo", color: "lightblue", text: "Salida", group: "Actividades", son: 1, category: "Actividad" },
-    ]);
+    if (model == null) {
+        myDiagram.model = new go.TreeModel([
+            { key: "Algoritmo", color: "#3d6fa0", text: "Algoritmo", group: "Actividades", son: 0, category: "Actividad" },
+            { key: "Entrada", parent: "Algoritmo", color: "lightblue", text: "Entrada", group: "Actividades", son: 1, category: "Actividad" },
+            { key: "Desarrollo", parent: "Algoritmo", color: "lightblue", text: "Desarrollo", group: "Actividades", son: 1, category: "Actividad" },
+            { key: "Salida", parent: "Algoritmo", color: "lightblue", text: "Salida", group: "Actividades", son: 1, category: "Actividad" },
+        ]);
+    } else {
+        myDiagram.model = new go.TreeModel;
+        for (var i = 0; i < model.length; i++) {
+            myDiagram.model.addNodeData(model[i]);
+        }
+    }
 
     /*var inspector = new Inspector('inspectorDiv', myDiagram, //crea un inspector para modificar propiedades de un nodo
         {

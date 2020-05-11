@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import * as go from 'gojs';
 import * as firebase from 'firebase/app';
 import { AuthService } from '../../servicios/auth.service';
+import { RouterModule, Router } from '@angular/router';
+
 declare const init: any;
 declare const store: any;
 declare const load: any;
+declare const edit: any;
 
 @Component({
   selector: 'app-diagram-creator',
@@ -22,10 +25,15 @@ export class DiagramCreatorComponent implements OnInit {
   public functionNumber = 1;
   public code = '';
 
-  constructor(public AuthService: AuthService) { }
+  constructor(public AuthService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    init();
+    const username = sessionStorage.getItem('id');
+    const db = firebase.firestore();
+    init(null, false);
+    if (this.router.url !== '/createDiagram'){
+      edit(db, this.router.url.split("/", 3)[2], username);
+    }
   }
 
   storeDiagram(): void{

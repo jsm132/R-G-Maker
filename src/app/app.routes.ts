@@ -12,7 +12,8 @@ const ROUTES: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'main', component: WelcomeComponent},
     {path: 'createDiagram', component: DiagramCreatorComponent},
-    {path: 'userDiagrams', component: UserDiagramsComponent}
+    {path: 'userDiagrams', component: UserDiagramsComponent},
+    {path: 'createDiagram/:diagramName', component: DiagramCreatorComponent}
 ];
 
 @NgModule({
