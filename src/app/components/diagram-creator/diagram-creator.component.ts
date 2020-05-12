@@ -32,14 +32,16 @@ export class DiagramCreatorComponent implements OnInit {
     const db = firebase.firestore();
     init(null, false);
     if (this.router.url !== '/createDiagram'){
-      edit(db, this.router.url.split("/", 3)[2], username);
+      edit(db, this.router.url.split("/", 4)[3], username);
+      let button = document.getElementById("storeDiagramButton"); 
+      button.innerHTML = "Editar Diagrama";
     }
   }
 
   storeDiagram(): void{
     const username = sessionStorage.getItem('id');
     const db = firebase.firestore();
-    store(db, username);
+    store(db, username, this.router.url.split("/", 4));
   }
 
   loadDiagram(): void{

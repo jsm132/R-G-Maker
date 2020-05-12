@@ -13,7 +13,7 @@ const ROUTES: Routes = [
     {path: 'main', component: WelcomeComponent},
     {path: 'createDiagram', component: DiagramCreatorComponent},
     {path: 'userDiagrams', component: UserDiagramsComponent},
-    {path: 'createDiagram/:diagramName', component: DiagramCreatorComponent}
+    {path: 'createDiagram/edit/:diagramName', component: DiagramCreatorComponent}
 ];
 
 @NgModule({

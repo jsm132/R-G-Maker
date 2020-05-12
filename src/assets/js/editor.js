@@ -12,8 +12,7 @@ function edit(db, name, user) {
                 const diagrams = doc.data().diagrams;
                 for (let i = 1; i < diagrams.length; i++) {
                     if (diagrams[i].diagramName == nameFormat) {
-                        console.log(diagrams[i].diagram);
-                        init(diagrams[i].diagram, true);
+                        init(diagrams[i].diagram, true, diagrams[i].code);
                     }
                 }
             }

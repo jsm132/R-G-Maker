@@ -7,6 +7,10 @@ var ifCond = 1;
 var functionNumber = 1;
 var code = "";
 
+function getTree() {
+    return tree;
+}
+
 function recursive(node) { //función que recorre el árbol recursivamente en preorden
     for (var i = 0; i < node.children.length; i++) {
         for (var j = 0; j < node.children[i].son; j++) {
@@ -141,7 +145,7 @@ function recursiveAddIf(node, gojsNode) {
     }
 }
 
-function init(model, isEdit) {
+function init(model, isEdit, editCode) {
     // creamos el tablero
     var $ = go.GraphObject.make;
 
@@ -185,7 +189,6 @@ function init(model, isEdit) {
     }); //cuando el texto de un nodo se edita se edita el código
 
     /* myDiagram.addDiagramListener("SelectionDeleted", (e, obj)=> {
-         console.log("pedo");
          updateCode();
      }); //cuando se borra un nodo se edita el código*/
 
@@ -296,21 +299,29 @@ function init(model, isEdit) {
             }
         });*/
 
-    tree = { value: "Algoritmo", text: "Algoritmo", children: [] };
-    tree.children.push({ value: "Entrada", group: "Actividad", text: "Entrada", son: 1, children: [] });
-    tree.children.push({ value: "Desarrollo", group: "Actividad", text: "Desarrollo", son: 1, children: [] });
-    tree.children.push({ value: "Salida", group: "Actividad", text: "Salida", son: 1, children: [] }); //creo la que será la estructura principal del árbol que servirá para realizar imprimir el código
-    recursive(tree);
-    updateCode();
+    if (!isEdit) {
+        tree = { value: "Algoritmo", text: "Algoritmo", children: [] };
+        tree.children.push({ value: "Entrada", group: "Actividad", text: "Entrada", son: 1, children: [] });
+        tree.children.push({ value: "Desarrollo", group: "Actividad", text: "Desarrollo", son: 1, children: [] });
+        tree.children.push({ value: "Salida", group: "Actividad", text: "Salida", son: 1, children: [] }); //creo la que será la estructura principal del árbol que servirá para realizar imprimir el código
+        recursive(tree);
+        updateCode(isEdit);
+    } else {
+
+        tree = editCode;
+        updateCode(isEdit);
+    }
 }
 
-function updateCode() { //funcion que actualiza el código generado por el arbol
+function updateCode(isEdit) { //funcion que actualiza el código generado por el arbol
     var body = document.getElementById("codeLabelDiv");
     if (body != null) {
         if (body.querySelector("p") != null) {
             body.removeChild(body.querySelector("p"));
         }
+
         code = "//Algoritmo<br>";
+
         var codelabel = document.createElement("p");
 
         recursive(tree);
