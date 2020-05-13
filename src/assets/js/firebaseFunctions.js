@@ -120,18 +120,18 @@ function auxStore(db, user, allDiagrams, route) {
 
     const name = document.getElementById("diagramName").value;
     const codelabel = getTree();
-    console.log(codelabel);
     if (name != null && name != "") {
         const mio = { diagramName: name, diagram: myDiagram.model.uc, code: codelabel };
 
-        // se encarga de editar el diagrama si estamos en la página de edición
+        // se encarga de editar el diagrama si estamos en la página de edición y adecuar la página a la edición
         if (route[2] == "edit") {
             db.collection("users").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if (doc.id == user) {
                         const diagrams = doc.data().diagrams;
                         for (let i = 1; i < diagrams.length; i++) {
-                            if (diagrams[i].diagramName == route[3]) {
+                            let nameFormat = route[3].replace("%20", " ");
+                            if (diagrams[i].diagramName == nameFormat) {
                                 allDiagrams.splice(diagrams[i], 1); //borramos el anterior diagrama guardado
                                 allDiagrams.push(mio); // y añadimos el nuevo diagrama editado
                                 db.collection("users").doc(user).update({

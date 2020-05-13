@@ -8,6 +8,7 @@ declare const init: any;
 declare const store: any;
 declare const load: any;
 declare const edit: any;
+declare const change: any;
 
 @Component({
   selector: 'app-diagram-creator',
@@ -33,8 +34,27 @@ export class DiagramCreatorComponent implements OnInit {
     init(null, false);
     if (this.router.url !== '/createDiagram'){
       edit(db, this.router.url.split("/", 4)[3], username);
-      let button = document.getElementById("storeDiagramButton"); 
+      const button = document.getElementById("storeDiagramButton"); 
       button.innerHTML = "Editar Diagrama";
+      const del = document.createElement("button");
+      del.id = "deleteButton";
+      del.type = "button";
+      del.onmouseover = function(){
+        
+      };
+      del.innerHTML = "Borrar diagrama";
+      del.style.backgroundColor = "red";
+      del.style.padding = "10px 12px";
+      del.style.textAlign = "center";
+      del.style.fontSize = "16p";
+      del.style.color = "white";
+      del.style.border = "none";
+      del.style.borderRadius = "8px";
+      del.style.marginLeft = "5px";
+      change(del, this.router.url.split("/", 4), db, username);
+      const container = document.getElementById("optionsDiv");
+      container.style.marginLeft = "10%";
+      container.appendChild(del);
     }
   }
 

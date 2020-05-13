@@ -329,8 +329,8 @@ function updateCode(isEdit) { //funcion que actualiza el código generado por el
         codelabel.id = "codeLabel";
         codelabel.style.position = "absolute";
         codelabel.style.left = "62%";
-        codelabel.style.top = "10%";
-        codelabel.style.fontFamily = "Times New Roman";
+        codelabel.style.top = "8%";
+        codelabel.style.fontFamily = "Calibri";
         codelabel.style.fontSize = "16px";
 
         body.appendChild(codelabel);
