@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DiagramCreatorComponent } from './components/diagram-creator/diagram-creator.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { UserDiagramsComponent } from './components/user-diagrams/user-diagrams.component';
+import { InformationComponent } from './components/information/information.component';
 
 const ROUTES: Routes = [
     {path: '', component: LoginComponent},
@@ -13,7 +14,8 @@ const ROUTES: Routes = [
     {path: 'main', component: WelcomeComponent},
     {path: 'createDiagram', component: DiagramCreatorComponent},
     {path: 'userDiagrams', component: UserDiagramsComponent},
-    {path: 'createDiagram/edit/:diagramName', component: DiagramCreatorComponent}
+    {path: 'createDiagram/edit/:diagramName', component: DiagramCreatorComponent},
+    {path: 'information', component: InformationComponent}
 ];
 
 @NgModule({

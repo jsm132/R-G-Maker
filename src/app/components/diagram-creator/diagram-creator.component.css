@@ -37,3 +37,10 @@ input {
 #optionsDiv {
     margin-left: 13%;
 }
+
+#codeLabelDiv {
+    border-radius: 10px;
+    margin-left: 210px;
+    margin-right: 10px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, .5);
+}

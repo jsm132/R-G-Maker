@@ -1,4 +1,5 @@
-//crea un documento en firebase cuando un usuario se registra, que servirá para almacenar todos los datos necesarios de este.
+//crea un documento en firebase cuando un usuario se registra, 
+//que servirá para almacenar todos los datos necesarios de este.
 function reg(db, email) {
     db.collection("users").doc(email).set({
         diagrams: [{ diagramName: "", diagram: [], code: [] }]
@@ -64,7 +65,7 @@ function thumbnail(id, model, isThumbnail) {
 
     var FunctionTemplate =
         $(go.Node, "Auto",
-            $(go.Shape, "Ellipse",
+            $(go.Shape, "TriangleUp",
                 new go.Binding("fill", "color")),
             $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: false, isMultiline: false },
                 new go.Binding("text", "text").makeTwoWay())
@@ -101,15 +102,17 @@ function load(db, user) {
                     innerDiagram.id = "dig" + i;
 
                     let div = document.createElement("div");
-                    div.style = ' height: 300px; margin-left: 200px; display: inline-block; width: 25%; margin-top: 20px; margin-left: 20px; overflow: hidden; border-radius: 10px; box-shadow: 0px 1px 10px rgba(0, 0, 0, .5); text-align: center; transition-duration: 0.4s;';
+                    div.style = ' height: 300px; margin-left: 200px; display: inline-block; width: 25%;' +
+                        'margin-top: 20px; margin-left: 20px; overflow: hidden; border-radius: 10px;' +
+                        'box-shadow: 0px 1px 10px rgba(0, 0, 0, .5); text-align: center; transition-duration: 0.4s;';
                     // creamos un link que al pulsar en el nombre del diagrama almacenado nos lleve a la página de edición del mismo
-                    div.innerHTML = "<a style=' color: #4CAF50;' routerLinkActive='router-link-active' ng-reflect-router-link='/createDiagram/edit' ng-reflect-router-link-active = 'router-link-active' href='/createDiagram/edit/" + diagrams[i].diagramName + "'>" + diagrams[i].diagramName + "</a>";
+                    div.innerHTML = "<a style=' color: #4CAF50;' routerLinkActive='router-link-active' " +
+                        "ng-reflect-router-link='/createDiagram/edit' ng-reflect-router-link-active = 'router-link-active' " +
+                        "href='/createDiagram/edit/" + diagrams[i].diagramName + "'>" + diagrams[i].diagramName + "</a>";
                     div.appendChild(innerDiagram);
                     diagramDiv.appendChild(div);
                     thumbnail("dig" + i, diagrams[i].diagram, true);
                 }
-
-
             }
         });
     });
@@ -123,7 +126,7 @@ function auxStore(db, user, allDiagrams, route) {
     if (name != null && name != "") {
         const mio = { diagramName: name, diagram: myDiagram.model.uc, code: codelabel };
 
-        // se encarga de editar el diagrama si estamos en la página de edición y adecuar la página a la edición
+        // se encarga de editar el diagrama si estamos en la página de edición
         if (route[2] == "edit") {
             db.collection("users").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
@@ -157,7 +160,6 @@ function auxStore(db, user, allDiagrams, route) {
 
 // función que almacena los diagramas del usuarios en la base de datos.
 function store(db, user, route) {
-
     let data;
     data = db.collection("users").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/header-sidebar/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { UserDiagramsComponent } from './components/user-diagrams/user-diagrams.component';
+import { InformationComponent } from './components/information/information.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserDiagramsComponent } from './components/user-diagrams/user-diagrams.
     FooterComponent,
     HeaderComponent,
     WelcomeComponent,
-    UserDiagramsComponent
+    UserDiagramsComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,

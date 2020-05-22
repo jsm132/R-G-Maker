@@ -27,7 +27,6 @@ function edit(db, name, user) {
 
 // función que ayuda al botón de borrar diagrama a llamar a la función de borrado
 function change(del, route, db, user) {
-    console.log("jaja");
     url = route[3];
     database = db;
     username = user;

@@ -149,16 +149,13 @@ function init(model, isEdit, editCode) {
     // creamos el tablero
     var $ = go.GraphObject.make;
 
-    if (!isEdit) {
+    if (isEdit == false) {
         myDiagram =
             $(go.Diagram, "DiagramDiv", {
                 layout: $(go.TreeLayout, // el diagrama se muestra en forma de árbol
                     { angle: 90, layerSpacing: 35 })
             });
     }
-
-
-
 
     var myModel = $(go.Model);
 
@@ -197,7 +194,7 @@ function init(model, isEdit, editCode) {
         $(go.Node, "Auto",
             $(go.Shape, "RoundedRectangle",
                 new go.Binding("fill", "color")),
-            $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: true, isMultiline: false }, // el atributo editable permite editar el texto de los nodos
+            $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: true, isMultiline: true }, // el atributo editable permite editar el texto de los nodos
                 new go.Binding("text", "text").makeTwoWay()), //makeTwoWay se utiliza para que el texto al ser modificado se modifique también el atributo text
             {
                 contextMenu: //menú de click derecho
@@ -258,7 +255,7 @@ function init(model, isEdit, editCode) {
 
     var FunctionTemplate =
         $(go.Node, "Auto",
-            $(go.Shape, "Ellipse",
+            $(go.Shape, "TriangleUp",
                 new go.Binding("fill", "color")),
             $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: true, isMultiline: false }, // el atributo editable permite editar el texto de los nodos
                 new go.Binding("text", "text").makeTwoWay()) //makeTwoWay se utiliza para que el texto al ser modificado se modifique también el atributo text
@@ -303,7 +300,7 @@ function init(model, isEdit, editCode) {
         tree = { value: "Algoritmo", text: "Algoritmo", children: [] };
         tree.children.push({ value: "Entrada", group: "Actividad", text: "Entrada", son: 1, children: [] });
         tree.children.push({ value: "Desarrollo", group: "Actividad", text: "Desarrollo", son: 1, children: [] });
-        tree.children.push({ value: "Salida", group: "Actividad", text: "Salida", son: 1, children: [] }); //creo la que será la estructura principal del árbol que servirá para realizar imprimir el código
+        tree.children.push({ value: "Salida", group: "Actividad", text: "Salida", son: 1, children: [] });
         recursive(tree);
         updateCode(isEdit);
     } else {

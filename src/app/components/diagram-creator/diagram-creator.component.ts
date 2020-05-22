@@ -47,7 +47,7 @@ export class DiagramCreatorComponent implements OnInit {
       del.style.padding = "10px 12px";
       del.style.textAlign = "center";
       del.style.fontSize = "16p";
-      del.style.color = "white";
+      del.style.color = "white"; 
       del.style.border = "none";
       del.style.borderRadius = "8px";
       del.style.marginLeft = "5px";
