@@ -163,7 +163,7 @@ function init(model, isEdit, editCode) {
         $(go.Node, "Auto",
             $(go.Shape, "Rectangle",
                 new go.Binding("fill", "color")),
-            $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: true, isMultiline: false }, // el atributo editable permite editar el texto de los nodos
+            $(go.TextBlock, { margin: 6, font: "18px sans-serif", editable: true, isMultiline: true }, // el atributo editable permite editar el texto de los nodos
                 new go.Binding("text", "text").makeTwoWay()), //makeTwoWay se utiliza para que el texto al ser modificado se modifique también el atributo text
             {
                 contextMenu: //menú de click derecho

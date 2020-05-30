@@ -12,6 +12,7 @@
         </div>
         <div id="codeLabelDiv"></div>
         <div id="optionsDiv">
+            <button id="code-to-diagramButton" routerLinkActive="router-link-active" [routerLink]="['/code-to-diagram']">código a diagrama</button>
             <span>Nombre del diagrama: </span>
             <input class="text" id="diagramName">
             <button id="storeDiagramButton" class="changeType ml-2" type="button" (click)="storeDiagram()">guardar diagrama</button>

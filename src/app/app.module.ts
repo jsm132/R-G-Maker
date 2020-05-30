@@ -18,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { UserDiagramsComponent } from './components/user-diagrams/user-diagrams.component';
 import { InformationComponent } from './components/information/information.component';
+import { CodeToDiagramComponent } from './components/code-to-diagram/code-to-diagram.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InformationComponent } from './components/information/information.compo
     HeaderComponent,
     WelcomeComponent,
     UserDiagramsComponent,
-    InformationComponent
+    InformationComponent,
+    CodeToDiagramComponent
   ],
   imports: [
     BrowserModule,

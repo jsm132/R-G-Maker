@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <app-header></app-header>
+
+    <div class="editor">
+        <div id="DiagramDiv" style="position:absolute; width:50%; height:700px; background-color: white;">
+        </div>
+        <div id="codeDiv" style="width:800px; height:700px; left: 940px; position: relative; background-color: #DAE4E4;">
+            <textarea id="code" oninput="changeDiagram()" style="width:800px; height:700px;background-color: #DAE4E4; font-family: 'Times New Roman'; font-size: 16px; ">
+//Algoritmo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Entrada
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Desarrollo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Salida</textarea>
+        </div>
+        <div id="optionsDiv">
+            <button id="diagram-to-codeButton" routerLinkActive="router-link-active" [routerLink]="['/createDiagram']">diagrama a código</button>
+            <span>Nombre del diagrama: </span>
+            <input class="text" id="diagramName">
+            <button id="storeDiagramButton" class="changeType ml-2" type="button" (click)="storeDiagram()">guardar diagrama</button>
+        </div>
+
+        <span style="display: inline-block; vertical-align: top;">
+            <div id="inspectorDiv" class="inspector"> </div><br>
+    </span>
+    </div>
+</body>
+
+</html>

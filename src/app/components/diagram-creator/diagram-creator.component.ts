@@ -31,7 +31,7 @@ export class DiagramCreatorComponent implements OnInit {
   ngOnInit(): void {
     const username = sessionStorage.getItem('id');
     const db = firebase.firestore();
-    init(null, false);
+    init(null, false, "");
     if (this.router.url !== '/createDiagram'){
       edit(db, this.router.url.split("/", 4)[3], username);
       const button = document.getElementById("storeDiagramButton"); 

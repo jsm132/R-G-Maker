@@ -7,6 +7,7 @@ import { DiagramCreatorComponent } from './components/diagram-creator/diagram-cr
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { UserDiagramsComponent } from './components/user-diagrams/user-diagrams.component';
 import { InformationComponent } from './components/information/information.component';
+import { CodeToDiagramComponent } from './components/code-to-diagram/code-to-diagram.component';
 
 const ROUTES: Routes = [
     {path: '', component: LoginComponent},
@@ -15,7 +16,8 @@ const ROUTES: Routes = [
     {path: 'createDiagram', component: DiagramCreatorComponent},
     {path: 'userDiagrams', component: UserDiagramsComponent},
     {path: 'createDiagram/edit/:diagramName', component: DiagramCreatorComponent},
-    {path: 'information', component: InformationComponent}
+    {path: 'information', component: InformationComponent},
+    {path: 'code-to-diagram', component: CodeToDiagramComponent}
 ];
 
 @NgModule({

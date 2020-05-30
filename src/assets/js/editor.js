@@ -4,7 +4,7 @@ var database;
 var username;
 
 function edit(db, name, user) {
-    let nameFormat = name.replace("%20", " ");
+    let nameFormat = decodeURI(name);
     let input = document.getElementById("diagramName");
     input.value = nameFormat;
     input.readOnly = true;
